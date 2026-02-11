@@ -10,7 +10,7 @@ WITH orders_per_day AS (
      ,ROUND(SUM(logcost),0) AS logcost
      ,ROUND(SUM(ship_cost),0) AS ship_cost
      ,SUM(quantity) AS quantity
- FROM `black-practice-485515-i0.dbt_andrea.int_orders_operational`
+FROM {{ref("int_orders_operational")}}
  GROUP BY  date_date
  )
 
