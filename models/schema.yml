@@ -10,11 +10,31 @@ sources:
            identifier: raw_gz_sales #What is the exact name of the table in  BQ
            description: sales of greewneez / we have one row per product_id found in each order_id
            columns:
+             - name: date_date
+               description: date of purchase
+               tests:
+                 - not_null
+
              - name: "(orders_id || '-' || pdt_id)"
                description: primary key of the table
                tests:
                  - unique
                  - not_null
+
+             - name: pdt_id
+               description: id of the product
+               tests:
+                 - not_null
+
+             - name: revenue
+               description: product revenue
+               tests:
+                 - not_null  
+
+             - name: quantity
+               description: purchase quantity
+               tests:
+                 - not_null     
 
          - name: product
            identifier: raw_gz_product
@@ -26,6 +46,11 @@ sources:
                  - unique
                  - not_null
 
+             - name: purchse_price
+               description: price of the purchase
+               tests:
+                 - not_null
+
          - name: ship
            identifier: raw_gz_ship
            description: ship_cost by orders_id
@@ -35,3 +60,18 @@ sources:
                tests:
                  - unique
                  - not_null
+
+             - name: shipping_fee
+               description: shipping fee of the order
+               tests:
+                 - not_null
+
+             - name: logCost
+               description: logistic costs of the order
+               tests:
+                 - not_null
+
+             - name: ship_cost
+               description: ship cost of the order
+               tests:
+                 - not_null           
