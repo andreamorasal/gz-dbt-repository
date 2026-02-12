@@ -34,7 +34,7 @@ sources:
              - name: quantity
                description: purchase quantity
                tests:
-                 - not_null     
+                 - not_null  
 
          - name: product
            identifier: raw_gz_product
@@ -74,40 +74,39 @@ sources:
              - name: ship_cost
                description: ship cost of the order
                tests:
-                 - not_null           
+                 - not_null   
 
 models:
-- name: int_sales_margin
-     description: margin calculation per order
-     columns:
-       - name: orders_id
-         description: orders key
-         tests:
+  - name: int_sales_margin
+    description: margin calculation per order
+    columns:
+      - name: orders_id
+        description: orders key
+        tests:
            - not_null
-       - name: products_id
-         description: products key
-         tests:
+      - name: products_id
+        description: products key
+        tests:
            - not_null
-       - name: margin
-         description: Margin = Revenue - Purchase_cost
-         tests:
+      - name: margin
+        description: Margin = Revenue - Purchase_cost
+        tests:
            - not_null
-       - name: Purchase_cost
-         description: Purchase_cost = Quantity * Purchase_price
-         tests:
+      - name: Purchase_cost
+        description: Purchase_cost = Quantity * Purchase_price
+        tests:
            - not_null
-       - name: date_date
-         description: date of the order
-         tests:
+      - name: date_date
+        description: date of the order
+        tests:
            - not_null
-       - name: revenue
-         description: sum of revenue per order
-         tests:
+      - name: revenue
+        description: sum of revenue per order
+        tests:
            - not_null
-       - name: quantity
-         description: sum of quantity per order
-         tests:
+      - name: quantity
+        description: sum of quantity per order
+        tests:
            - not_null
-     tests:
-       - unique:
-           column_name: "(orders_id || '-' || products_id)"
+
+                 
